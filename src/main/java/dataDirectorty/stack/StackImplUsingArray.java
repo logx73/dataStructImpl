@@ -1,5 +1,8 @@
 package dataDirectorty.stack;
 
+import exception.StructureEmptyException;
+import exception.StructureFullException;
+
 import java.util.Arrays;
 
 public class StackImplUsingArray {
@@ -12,19 +15,19 @@ public class StackImplUsingArray {
         this.stack=new int[size];
     }
 
-    public String push(int value){
+    public String push(int value) throws StructureFullException {
         if(!isFull())
             this.stack[++top]=value;
         else
-            return "Cannot Add Stack Full";
+            throw new StructureFullException("Stack Full");
         return "Added";
     }
 
-    public String pop(){
+    public String pop() throws StructureEmptyException{
         if(!isEmpty())
             this.stack[top--]=0;
         else
-            return "Stack Empty Cannot Remove";
+            throw new StructureEmptyException("Stack Empty");
         return "Removed";
     }
 
