@@ -9,6 +9,10 @@ public class MaintainTopTenScoreUsingLinkList {
     public MaintainTopTenScoreUsingLinkList(){
     }
 
+    public void addSortedListScore(int data){
+        linkList.insertSorted(data);
+    }
+
     public void addScore(int score){
         linkList.insert(score);
         size++;

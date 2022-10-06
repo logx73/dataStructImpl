@@ -8,8 +8,26 @@ public class LinkList {
     Link first;
     public LinkList(){
     }
+    //Not Ideally we will expose Link to other classes .Just for Trial Purpose
     public Link get(){
         return first;
+    }
+
+    public void insertSorted(int data){
+        Link newLink = new Link(data);
+        Link previous = null ;
+        Link current = first ;
+        while (current!=null && data < current.getData()){
+            previous = current;
+            current = current.getLink();
+        }
+
+        if(previous == null){
+            first = newLink ;
+        }else{
+            previous.setLink(newLink);
+        }
+        newLink.setLink(current);
     }
 
     public String insert(int data){
