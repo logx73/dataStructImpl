@@ -9,6 +9,9 @@ public class Link {
     public void display(){
         System.out.println("Data :"+ data);
     }
+    public void setData(int data){
+        this.data = data;
+    }
     public int getData(){
         return data;
     }

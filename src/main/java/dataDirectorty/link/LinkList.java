@@ -8,6 +8,9 @@ public class LinkList {
     Link first;
     public LinkList(){
     }
+    public Link get(){
+        return first;
+    }
 
     public String insert(int data){
         Link newLink = new Link(data);
