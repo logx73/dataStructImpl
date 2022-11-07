@@ -3,19 +3,19 @@ package dataDirectorty.link;
 public class DoublyList {
     private DoublyLink first;
     private DoublyLink last;
-    public int size;
+
     public DoublyList(){
         first = new DoublyLink();
     }
 
-    public void insert(int data){
+    public void insertSingly(int data){
         DoublyLink doublyLink=new DoublyLink(data);
         first.setNext(doublyLink);
         doublyLink.setPrevious(first);
         first = doublyLink ;
     }
 
-    public void delete(int data){
+    public void deleteSingly(int data){
         DoublyLink nCurrent = first;
         DoublyLink current = first;
         DoublyLink previous = first;
@@ -36,7 +36,6 @@ public class DoublyList {
             previous.setPrevious(nCurrent);
             nCurrent.setNext(previous);
         }
-        current = current.getNext();
     }
 
     public void insertFirst(int data){
@@ -67,5 +66,26 @@ public class DoublyList {
             lastLink.setPrevious(last);
         }
         last = lastLink;
+    }
+
+    public String deleteKey(long key)
+    {
+        DoublyLink current = first;
+        while(current.getData() != key)
+        {
+            current = current.getPrevious();
+            if(current == null)
+                return "Not Found";
+        }
+        if(current==first)
+            first = current.getPrevious();
+        else
+            current.getNext().setPrevious(current.getPrevious());
+        if(current==last)
+            last = current.getNext();
+        else
+            current.getPrevious().setNext(current.getNext());
+
+        return "Deleted";
     }
 }
